@@ -6,6 +6,7 @@ import Courses from "../../components/Courses-section/Courses";
 import { Container, Row, Col } from "reactstrap";
 import geeksImage from './GeeksforGeeks.png';
 
+
 const IconStyle = {
   display: "inline-block",
   width: "120px",
