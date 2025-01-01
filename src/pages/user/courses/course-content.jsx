@@ -35,33 +35,38 @@ const CourseContent= ({ heading }) => {
       setIsScrolled(false);
     }
   };
-  const handleEnroll = async () => {
-    try {
-      const user = auth.currentUser; // Get the currently logged-in user
-  
-      if (!user) {
-        console.error("User is not logged in!");
-        return;
-      }
-  
-      if (!course || !course.heading) {
-        console.error("Course heading is undefined!");
-        return;
-      }
-  
-      const userDocRef = doc(db, "users", user.uid); // Reference to the user document
-  
-      // Add the course heading to the 'enrollCourses' field using arrayUnion
-      await updateDoc(userDocRef, {
-        enrollCourses: arrayUnion(course.heading),
-      });
-  
-      alert(`${course.heading} has been successfully added to your enrolled courses!`);
+
+const handleEnroll = async () => {
+  try {
+    const user = auth.currentUser; // Get the currently logged-in user
+
+    if (!user) {
+      console.error("User is not logged in!");
+      return;
+    }
+
+    if (!course || !course.heading || !course.url) {
+      console.error("Course details are incomplete!");
+      return;
+    }
+
+    const userDocRef = doc(db, "users", user.uid); // Reference to the user document
+
+    // Add the course object to the 'enrollCourses' field using arrayUnion
+    await updateDoc(userDocRef, {
+      enrollCourses: arrayUnion({
+        heading: course.heading,
+        url: course.url,
+      }),
+    });
+
+    alert(`${course.heading} has been successfully added to your enrolled courses!`);
   } catch (error) {
     alert("An error occurred while enrolling in the course. Please try again.");
     console.error("Error enrolling in course:", error);
   }
-  };
+};
+
   
   useEffect(() => {
     const fetchCourse = async () => {

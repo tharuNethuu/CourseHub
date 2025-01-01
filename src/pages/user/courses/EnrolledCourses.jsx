@@ -37,9 +37,18 @@ const EnrolledCourses = () => {
         setLoading(false);
       }
     });
+  
 
     return () => unsubscribe(); // Cleanup listener on unmount
   }, []);
+  const handleCourseClick = (url) => {
+    if (url) {
+      window.location.href = url;
+    } else {
+      console.error("No URL found for this course.");
+    }
+  };
+  
 
   return (
     <Container className="mt-5">
@@ -55,8 +64,11 @@ const EnrolledCourses = () => {
         <Row>
           {enrolledCourses.map((course, index) => (
             <Col lg="6" md="6" sm="12" key={index} className="mb-2">
-              <div className="enrolled-course-card shadow-sm p-3">
-                <h6>{course}</h6>
+              <div className="enrolled-course-card shadow-sm p-3"
+              onClick={()=> handleCourseClick(course.url)}
+              style={{ cursor: "pointer" }}
+              >
+                <h6>{course.heading}</h6>
               </div>
             </Col>
           ))}

@@ -6,9 +6,21 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  .enrolled-course-card:hover {
+    background-color: #eafdf8;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid darkgreen; /* Border color, width, and style defined together */
+  }
+  
+  
+
+
   .enrolled-course-card h4 {
     color: #343a40;
     font-weight: 500;
+
   }
   .loading-spinner {
     text-align: center;
