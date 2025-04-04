@@ -20,7 +20,7 @@ const AboutUs = () => {
             <div className="about__content">
               <h2>About Us</h2>
               <p className="aboutpara">
-              Our platform offers a diverse range of courses tailored to meet
+              Our platform offers a diverse range of courses tailored to meeting
               the needs of learners at all stages of their journey. With expert instructors,
               flexible schedules we ensure that
               every learner has the tools and support they need to reach their goals. 
